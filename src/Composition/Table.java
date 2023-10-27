@@ -2,19 +2,32 @@ package Composition;
 
 import java.util.ArrayList;
 
-public class Table {
-    public class Leg {
+public class Table implements Billable {
+   
+    private int len;
+    private int wid;
 
-        private Integer length;
-
-        public Leg(Integer length) {
-            this.length = length;
-        }
+    public Table(int length, int width)
+    {
+        this.len = length;
+        this.wid = width;
     }
 
-    private Integer width = 20;
-    private Integer length = 10;
-    private ArrayList<Leg> legs = new ArrayList<>();
+    public int getLength() {
+        return len;
+    }
+
+    public int getWidth() {
+        return wid;
+    }
+
+    public void setLength() {
+        
+    }
+    public void setWidth() {
+
+    }
+    private ArrayList<Leg > legs = new ArrayList<>();
 
     public Table(Integer numLegs) {
         for (int i = 0; i < numLegs; i++) {
@@ -24,5 +37,12 @@ public class Table {
 
     public static void main(String[] args) {
         var myTable = new Table(4);
+    }
+
+    @Override
+    public Float getPrice() {
+        float sum;
+        sum = len * wid;
+        return sum;
     }
 }
